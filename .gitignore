@@ -1,16 +1,16 @@
+.DS_Store
 node_modules/
-dist/
-
-#logs
-*.iml
-webpack-assets.json
-webpack-stats.json
 npm-debug.log
-
-# Configs
-config.json
-!config.sample.json
-
-# editer
 .idea/
-*.swp
+dump.rdb
+.vscode/
+public/*
+dist
+coverage/
+.nyc_output/
+
+.travis.yml
+Dockerfile
+Dockerfile-development
+docker-compose-development.yml
+docker-compose.yml

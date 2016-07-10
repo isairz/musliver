@@ -10,8 +10,7 @@ npm run dev
 ```
 Production
 ```
-npm run build
-npm run start
+npm run bs
 ```
 
 ## License
