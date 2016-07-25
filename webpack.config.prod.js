@@ -6,13 +6,14 @@ var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
 var cssnano = require('cssnano');
+var path = require('path');
 
 module.exports = {
   devtool: 'hidden-source-map',
 
   entry: {
     app: [
-      './client/index.js',
+      './client/client.js',
     ],
     vendor: [
       'react',
@@ -29,7 +30,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modules: [
-      'client',
+      path.resolve(__dirname, "client"),
       'node_modules',
     ],
   },

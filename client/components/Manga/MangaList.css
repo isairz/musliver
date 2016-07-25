@@ -1,0 +1,20 @@
+.listwrap {
+  width: auto;
+  float: none;
+  position: relative;
+}
+.headline {
+  font-size: 14px;
+  color: #666;
+  height: 40px;
+  padding: 0 20px;
+  margin: 0;
+  line-height: 42px;
+  font-weight: normal;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  background: #f6f6f6;
+  background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#ffffff', EndColorStr='#f8f8f8');
+}

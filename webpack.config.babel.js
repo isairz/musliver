@@ -1,6 +1,7 @@
 var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
+var path = require('path');
 
 module.exports = {
   output: {
@@ -10,7 +11,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modules: [
-      'client',
+      path.resolve(__dirname, "client"),
       'node_modules',
     ],
   },
@@ -30,7 +31,7 @@ module.exports = {
   postcss: () => [
     postcssFocus(),
     cssnext({
-      browsers: ['last 2 versions', 'IE > 10'],
+      browsers: ['last 2 versions', 'IE > 9'],
     }),
     postcssReporter({
       clearMessages: true,

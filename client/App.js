@@ -1,16 +1,12 @@
-/**
- * Root Component
- */
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
-import IntlWrapper from './modules/Intl/IntlWrapper'
 
-// Import Routes
+import IntlWrapper from 'Intl/IntlWrapper'
 import routes from './routes'
 
 // Base stylesheet
-require('./main.css')
+require('./base.scss')
 
 export default function App (props) {
   return (

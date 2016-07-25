@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
+var path = require('path');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -11,7 +12,7 @@ module.exports = {
       'webpack-hot-middleware/client',
       'webpack/hot/only-dev-server',
       'react-hot-loader/patch',
-      './client/index.js',
+      './client/client.js',
     ],
     vendor: [
       'react',
@@ -28,7 +29,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modules: [
-      'client',
+      path.resolve(__dirname, "client"),
       'node_modules',
     ],
   },
@@ -36,11 +37,11 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         exclude: /node_modules/,
         loader: 'style-loader!css-loader?localIdentName=[name]__[local]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
       }, {
-        test: /\.css$/,
+        test: /\.s?css$/,
         include: /node_modules/,
         loaders: ['style-loader', 'css-loader'],
       }, {

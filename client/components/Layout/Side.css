@@ -1,0 +1,46 @@
+.side-widget {
+  margin: 0;
+  padding: 0 20px;
+  font-szie: 11px;
+  color: #888;
+  border-left: 1px solid #ccc;
+}
+
+.headline {
+  background: #08a8c5;
+  color: #fff;
+  margin: 0 -20px;
+  position: relative;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 47px;
+  font-weight: normal
+}
+
+.side-menu ul {
+  margin: 0 -20px;
+  padding: 0;
+  list-style: none;
+}
+
+.side-menu li {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 170%;
+}
+
+.side-menu li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px 20px 12px;
+  margin: 0;
+  border-bottom: 1px dotted #aaa;
+  color: #666;
+}
+
+.side-menu li a:hover {
+  background-color: #746b94;
+  color: #fff;
+}

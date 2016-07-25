@@ -1,0 +1,44 @@
+.single-manga {
+  margin: 20px 0;
+  padding: 0 0 15px 0;
+  border-radius: 2px;
+  border-bottom: 1px solid #ccc;
+  min-height: 132px;
+}
+
+.manga-thumbnail {
+  width: 30%;
+  margin: 0;
+  padding: 0 0 0 15px;
+  float:left;
+  line-height: 0;
+}
+
+.manga-data {
+  @include clearfix();
+  width: 70%;
+  float:right;
+}
+
+.manga-data:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.manga-title {
+  margin: 0 0 8px;
+  padding: 0;
+  line-height: 150%;
+  font-size: 16pt;
+}
+
+.manga-title a {
+  text-decoration: none;
+  color: #333;
+}
+
+.manga-title a:hover {
+  text-decoration: underline;
+  color: #16BAB4;
+}
