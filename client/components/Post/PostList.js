@@ -2,15 +2,15 @@ import React, { PropTypes } from 'react'
 
 import PostListItem from './PostListItem'
 
-function PostList (props) {
+function PostList ({ posts, handleDeletePost }) {
   return (
     <div className='listView'>
       {
-        props.posts.map(post => (
+        posts && posts.map(post => (
           <PostListItem
             post={post}
             key={post.cuid}
-            onDelete={() => props.handleDeletePost(post.cuid)}
+            onDelete={() => handleDeletePost(post.cuid)}
           />
         ))
       }

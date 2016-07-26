@@ -1,9 +1,9 @@
 import Express from 'express'
 import compression from 'compression'
-import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import path from 'path'
 import IntlWrapper from '../client/Intl/IntlWrapper'
+import sequelize from './models'
 
 // Webpack Requirements
 import webpack from 'webpack'
@@ -34,26 +34,14 @@ import routes from '../client/routes'
 import { fetchComponentData } from './util/fetchData'
 import posts from './routes/post.routes'
 import manga from './routes/manga.routes'
-import dummyData from './dummyData'
-import serverConfig from './config'
-
-// MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, (error) => {
-  if (error) {
-    console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
-    throw error
-  }
-
-  // feed some dummy data in DB.
-  dummyData()
-})
+import { serverConfig } from '../config'
 
 // Apply body Parser and server public assets and routes
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
 app.use(Express.static(path.resolve(__dirname, '../dist')))
-app.use('/api', posts)
+app.use('/api/posts', posts)
 app.use('/api', manga)
 
 // Render Initial HTML
@@ -138,10 +126,12 @@ app.use((req, res, next) => {
 })
 
 // start app
-app.listen(serverConfig.port, (error) => {
-  if (!error) {
-    console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
-  }
+sequelize.sync().then(() => {
+  app.listen(serverConfig.port, (error) => {
+    if (!error) {
+      console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+    }
+  })
 })
 
 export default app

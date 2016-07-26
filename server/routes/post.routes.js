@@ -8,9 +8,9 @@ import Post from '../models/post'
 
 const router = new Router()
 
-router.route('/posts')
+router.route('/')
   .get(route(async (req, res) => {
-    const posts = await Post.find().sort('-dateAdded')
+    const posts = await Post.findAll()
     res.json({ posts })
   }))
   .post(route(async (req, res) => {
@@ -18,32 +18,24 @@ router.route('/posts')
       res.status(403).end()
     }
 
-    const newPost = new Post(req.body.post)
-
-      // Let's sanitize inputs
-    newPost.title = sanitizeHtml(newPost.title)
-    newPost.name = sanitizeHtml(newPost.name)
-    newPost.content = sanitizeHtml(newPost.content)
-
-    newPost.slug = slug(newPost.title.toLowerCase(), { lowercase: true })
-    newPost.cuid = cuid()
-    newPost.save((err, saved) => {
-      if (err) {
-        res.status(500).send(err)
-      }
-      res.json({ post: saved })
+    const post = req.body.post
+    const saved = await Post.create({
+      title: sanitizeHtml(post.title),
+      name: sanitizeHtml(post.name),
+      content: sanitizeHtml(post.content),
+      slug: slug(post.title.toLowerCase(), { lowercase: true }),
+      cuid: cuid(),
     })
+    res.json({ post: saved })
   }))
 
-router.route('/posts/:cuid')
+router.route('/:cuid')
   .get(route(async (req, res) => {
-    const post = await Post.findOne({ cuid: req.params.cuid })
+    const post = await Post.findOne({ where: { cuid: req.params.cuid } })
     res.json({ post })
   }))
   .delete(route(async (req, res) => {
-    const post = await Post.findOne({ cuid: req.params.cuid })
-
-    await post.remove()
+    await Post.destroy({ where: { cuid: req.params.cuid } })
     res.status(200).end()
   }))
 
