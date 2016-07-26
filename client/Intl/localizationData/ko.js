@@ -44,6 +44,12 @@ export default {
     releasedDate: '발매일',
     tags: 'Tags',
 
+    /* BookType */
+    official: '오피셜',
+    doujinshi: '동인지',
+    anthology: '엔솔로지',
+    illustration: '일러스트',
+
     /* Characters */
     honoka: '호노카',
     eli: '에리',

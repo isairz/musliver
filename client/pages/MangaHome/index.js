@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 
-// Import Components
+import Title from 'components/Layout/Title'
 import MangaList from 'components/Manga/MangaList'
 
 import { fetchMangas, getMangas } from 'redux/manga'
@@ -14,7 +14,8 @@ class MangaHome extends Component {
   render () {
     return (
       <div>
-        <MangaList mangas={this.props.mangas} headline='Recent Manga' />
+        <Title>Recent Manga</Title>
+        <MangaList mangas={this.props.mangas} />
       </div>
     )
   }

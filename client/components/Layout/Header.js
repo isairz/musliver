@@ -19,13 +19,13 @@ export function Header (props, context) {
               <span className={styles['site-title']}><FormattedMessage id='siteTitle' /></span>
             </li>
           </IndexLink>
-          <Link to='/Manga'>
-            <li className={context.router.isActive('/Manga') ? styles.selected : ''}>
+          <Link to='/manga'>
+            <li className={context.router.isActive('/manga') ? styles.selected : ''}>
               <FormattedMessage id='manga' />
             </li>
           </Link>
-          <Link to='/Community'>
-            <li className={context.router.isActive('/Community') ? styles.selected : ''}>
+          <Link to='/community'>
+            <li className={context.router.isActive('/community') ? styles.selected : ''}>
               <FormattedMessage id='community' />
             </li>
           </Link>

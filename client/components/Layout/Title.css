@@ -1,0 +1,13 @@
+.title {
+  font-size: 1em;
+  color: #666;
+  padding: 10px 20px;
+  margin: 0;
+  font-weight: normal;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  background: #f6f6f6;
+  background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#ffffff', EndColorStr='#f8f8f8');
+}

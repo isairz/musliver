@@ -9,7 +9,7 @@ import { deleteMangaRequest } from 'redux/manga'
 // Import Style
 import styles from './MangaList.css'
 
-function MangaList ({ mangas = [], headline, dispatch }) {
+function MangaList ({ mangas = [], dispatch }) {
   const handleDeleteManga = manga => {
     if (confirm('Do you want to delete this manga')) { // eslint-disable-line
       dispatch(deleteMangaRequest(manga))
@@ -17,7 +17,6 @@ function MangaList ({ mangas = [], headline, dispatch }) {
   }
   return (
     <div className={styles['listwrap']}>
-      <h2 className={styles['headline']}>{headline}</h2>
       {
         mangas.map(manga => (
           <MangaListItem
@@ -39,7 +38,6 @@ MangaList.propTypes = {
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   })).isRequired,
-  headline: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
 
