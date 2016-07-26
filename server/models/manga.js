@@ -1,15 +1,14 @@
-import mongoose, { Schema } from 'mongoose'
-import autoIncrement from 'mongoose-auto-increment'
+import { ARRAY, DATE, INTEGER, STRING } from 'sequelize'
+import sequelize from './'
 
-const mangaSchema = new Schema({
-  title: String,
-  author: String,
-  type: String,
-  characters: [String],
-  publish: Date,
-  upload: { type: Date, default: Date.now },
-  page: Number,
+const Manga = sequelize.define({
+  title: { type: STRING },
+  slug: { type: STRING },
+  author: { type: STRING },
+  type: { type: STRING },
+  characters: { type: ARRAY(STRING) },
+  publicationDate: { type: DATE },
+  page: INTEGER,
 })
 
-mangaSchema.plugin(autoIncrement.plugin, 'Manga')
-module.exports = mongoose.model('Manga', mangaSchema)
+export default Manga
