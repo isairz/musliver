@@ -49,18 +49,6 @@ export function addManga (manga) {
   }
 }
 
-export function addMangaRequest (manga) {
-  return (dispatch) => {
-    return callApi('mangas', 'manga', {
-      manga: {
-        name: manga.name,
-        title: manga.title,
-        content: manga.content,
-      },
-    }).then(res => dispatch(addManga(res.manga)))
-  }
-}
-
 export function addMangas (mangas) {
   return {
     type: ADD_MANGAS,
@@ -68,13 +56,8 @@ export function addMangas (mangas) {
   }
 }
 
-export function fetchMangas () {
-  return (dispatch) => {
-    return callApi('mangas').then(res => {
-      dispatch(addMangas(res.mangas))
-    })
-  }
-}
+export const fetchMangas = payload => dispatch =>
+  callApi('manga').then(res => dispatch(addMangas(res.mangas)))
 
 export const fetchManga = cuid => dispatch =>
   callApi(`posts/${cuid}`).then(res => dispatch(addManga(res.manga)))
@@ -85,6 +68,11 @@ export function deleteManga (cuid) {
     cuid,
   }
 }
+
+export const addMangaRequest = payload => dispatch =>
+  callApi('manga', 'post', payload, false)
+    .then(res => dispatch(addManga(res.manga)))
+    .catch(err => console.log(err))
 
 export function deleteMangaRequest (cuid) {
   return (dispatch) => {
