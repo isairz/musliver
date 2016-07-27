@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import route from '../util/async-route'
 import sanitizeHtml from 'sanitize-html'
 import cuid from 'cuid'
 import slug from 'limax'
 
 import Post from '../models/post'
+import route from '../util/async-route'
 
 const router = new Router()
 
