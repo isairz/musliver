@@ -11,6 +11,9 @@ export const dbConfig = {
   database: 'musliver',
   username: null,
   password: null,
-  host: 'localhost',
-  dialect: 'postgres',
+  options: {
+    host: 'localhost',
+    dialect: 'postgres',
+    logging: false,
+  },
 }
