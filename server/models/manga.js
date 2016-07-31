@@ -6,6 +6,9 @@ import fs from 'fs-promise'
 import path from 'path'
 import sharp from 'sharp'
 
+import ItemTag from './itemTag'
+import Tag from './tag'
+
 const Manga = sequelize.define('manga', {
   title: { type: STRING, allowNull: false, validate: { notEmpty: true } },
   author: { type: STRING },
@@ -13,6 +16,25 @@ const Manga = sequelize.define('manga', {
   characters: { type: ARRAY(STRING) },
   publicationDate: { type: DATE },
   page: INTEGER,
+})
+
+Manga.belongsToMany(Tag, {
+  through: {
+    model: ItemTag,
+    uniqye: false,
+    scope: { taggable: 'manga' },
+  },
+  foreignKey: 'taggable_id',
+  constraints: false,
+})
+
+Tag.belongsToMany(Manga, {
+  through: {
+    model: ItemTag,
+    unique: false,
+  },
+  foreignKey: 'tag_id',
+  constraints: false,
 })
 
 Manga.upload = async (payload, file) => {
