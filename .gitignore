@@ -9,6 +9,7 @@ dist
 coverage/
 .nyc_output/
 /config.js
+/files/*
 
 .travis.yml
 Dockerfile

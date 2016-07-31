@@ -63,7 +63,7 @@ Manga.upload = async (payload, file) => {
   }
 
   const saved = await Manga.create({ ...payload, page: idx })
-  await fs.move(targetDir, `./files/${saved.id}`)
+  await fs.move(targetDir, `./files/manga/${saved.id}`)
   return saved
 }
 
