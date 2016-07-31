@@ -20,6 +20,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('./pages/PostListPage')
   require('./pages/PostDetailPage')
   require('./pages/MangaHome')
+  require('./pages/MangaDetailPage')
+  require('./pages/MangaUpload')
 }
 
 // react-router setup with code-splitting
@@ -38,6 +40,14 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./pages/MangaHome').default)
+        })
+      }}
+    />
+    <Route
+      path='/manga/:id'
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./pages/MangaDetailPage').default)
         })
       }}
     />
