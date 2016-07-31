@@ -2,6 +2,7 @@ import Express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
 import path from 'path'
+import morgan from 'morgan'
 import IntlWrapper from '../client/Intl/IntlWrapper'
 import sequelize from './models'
 
@@ -37,6 +38,7 @@ import manga from './routes/manga.routes'
 import { serverConfig } from '../config'
 
 // Apply body Parser and server public assets and routes
+app.use(morgan('combined'))
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))

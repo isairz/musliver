@@ -35,9 +35,6 @@ Manga.upload = async (payload, file) => {
       .toFile(dest)
   )
 
-  console.log(payload)
-  console.log(file)
-
   const tmpDir = file.path + '_'
   const targetDir = path.join(tmpDir, 'result')
   const unpacks = await decompress(file.path, tmpDir, decompressOptions)
