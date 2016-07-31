@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
     case ADD_MANGA :
       return {
         ...state,
-        data: [action.manga, ...state.data],
+        data: [...state.data, action.manga],
       }
 
     case ADD_MANGAS :
@@ -35,11 +35,8 @@ export default function (state = initialState, action) {
   }
 }
 
-export const getMangas = state => {
-  return state.manga.data
-}
-
-export const getManga = (state, cuid) => state.manga.data.filter(manga => manga.cuid === cuid)[0]
+export const getMangas = state => state.manga.data
+export const getManga = (state, id) => state.manga.data.filter(manga => manga.id === id)[0]
 export const getShowAddManga = state => state.manga.showAddManga
 
 export function addManga (manga) {
@@ -59,8 +56,9 @@ export function addMangas (mangas) {
 export const fetchMangas = payload => dispatch =>
   callApi('manga').then(res => dispatch(addMangas(res.mangas)))
 
-export const fetchManga = cuid => dispatch =>
-  callApi(`posts/${cuid}`).then(res => dispatch(addManga(res.manga)))
+export const fetchManga = id => dispatch => {
+  return callApi(`manga/${id}`).then(res => dispatch(addManga(res.manga)))
+}
 
 export function deleteManga (cuid) {
   return {
@@ -74,8 +72,8 @@ export const addMangaRequest = payload => dispatch =>
     .then(res => dispatch(addManga(res.manga)))
     .catch(err => console.log(err))
 
-export function deleteMangaRequest (cuid) {
+export function deleteMangaRequest (id) {
   return (dispatch) => {
-    return callApi(`posts/${cuid}`, 'delete').then(() => dispatch(deleteManga(cuid)))
+    return callApi(`manga/${id}`, 'delete').then(() => dispatch(deleteManga(id)))
   }
 }

@@ -6,12 +6,30 @@
   min-height: 132px;
 }
 
+.single-manga:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  font-size: 0.1em;
+  line-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
 .manga-thumbnail {
   width: 30%;
   margin: 0;
   padding: 0 0 0 15px;
   float:left;
   line-height: 0;
+}
+
+.manga-thumbnail-image {
+  width: 200px;
+  height: 161px;
+  background-position: top;
+  background-size: cover;
 }
 
 .manga-data {

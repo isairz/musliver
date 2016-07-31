@@ -33,7 +33,7 @@ function mapStateToProps (state) {
 
 MangaHome.propTypes = {
   mangas: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
   })).isRequired,
