@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
     case DELETE_MANGA :
       return {
         ...state,
-        data: state.data.filter(manga => manga.cuid !== action.cuid),
+        data: state.data.filter(manga => manga.id !== action.id),
       }
 
     default:
@@ -60,10 +60,10 @@ export const fetchManga = id => dispatch => {
   return callApi(`manga/${id}`).then(res => dispatch(addManga(res.manga)))
 }
 
-export function deleteManga (cuid) {
+export function deleteManga (id) {
   return {
     type: DELETE_MANGA,
-    cuid,
+    id,
   }
 }
 

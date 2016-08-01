@@ -7,6 +7,8 @@ import { characters, bookTypes } from 'constants/manga'
 import styles from './Side.css'
 
 export function Side (props) {
+  // FIXME: Temp Admin
+  const isAdmin = () => (window.location.hash === '#admin')
   return (
     <div className={styles['side-widget']}>
       <div className={styles['side-menu']}>
@@ -26,11 +28,11 @@ export function Side (props) {
             {characters.map(name => (<li key={name}><Link to={`/characters/${name}`}><FormattedMessage id={name} /></Link></li>))}
           </ul>
         </nav>
-        {/* <Link to='/manga/upload'>
+        {isAdmin() && <Link to='/manga/upload'>
           <h3 className={styles['headline']}>
             <FormattedMessage id='addManga' />
           </h3>
-        </Link>*/}
+        </Link>}
       </div>
     </div>
   )

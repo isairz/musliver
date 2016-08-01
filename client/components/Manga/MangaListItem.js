@@ -5,7 +5,9 @@ import { FormattedDate, FormattedMessage } from 'react-intl'
 // Import Style
 import styles from './MangaListItem.css'
 
-function MangaListItem ({ manga }) {
+function MangaListItem ({ manga, onDelete }) {
+  // FIXME: Temp Admin
+  const isAdmin = () => (window.location.hash === '#admin')
   return (
     <article className={styles.manga}>
       <p className={styles.thumbnailWrap}>
@@ -26,6 +28,7 @@ function MangaListItem ({ manga }) {
             <Link to={`/manga/character/${character}`}><FormattedMessage id={character} /></Link>)
         }</div>}
         {manga.createdAt && <div className={styles.createdAt}><FormattedDate value={manga.createdAt} /></div>}
+        {isAdmin && <p className={styles['post-action']}><a href='#' onClick={onDelete}><FormattedMessage id='deleteManga' /></a></p>}
       </div>
     </article>
   )

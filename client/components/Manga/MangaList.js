@@ -10,9 +10,9 @@ import { deleteMangaRequest } from 'redux/manga'
 import styles from './MangaList.css'
 
 function MangaList ({ mangas = [], dispatch }) {
-  const handleDeleteManga = manga => {
+  const handleDeleteManga = id => {
     if (confirm('Do you want to delete this manga')) { // eslint-disable-line
-      dispatch(deleteMangaRequest(manga))
+      dispatch(deleteMangaRequest(id))
     }
   }
   return (
