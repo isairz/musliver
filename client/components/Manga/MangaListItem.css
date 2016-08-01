@@ -1,4 +1,4 @@
-.single-manga {
+.manga {
   margin: 20px 0;
   padding: 0 0 15px 0;
   border-radius: 2px;
@@ -6,7 +6,7 @@
   min-height: 132px;
 }
 
-.single-manga:after {
+.manga:after {
   content: ".";
   display: block;
   clear: both;
@@ -17,46 +17,64 @@
   overflow: hidden;
 }
 
-.manga-thumbnail {
-  width: 30%;
+.thumbnailWrap {
   margin: 0;
   padding: 0 0 0 15px;
   float:left;
   line-height: 0;
 }
 
-.manga-thumbnail-image {
+.thumbnail {
   width: 200px;
   height: 161px;
   background-position: top;
   background-size: cover;
 }
 
-.manga-data {
-  @include clearfix();
-  width: 70%;
-  float:right;
+.data {
+  float:left;
+  margin-left: 20px;
 }
 
-.manga-data:after {
+.data:after {
   content: " ";
   display: table;
   clear: both;
 }
 
-.manga-title {
+.title {
   margin: 0 0 8px;
   padding: 0;
   line-height: 150%;
   font-size: 16pt;
 }
 
-.manga-title a {
+.title a {
   text-decoration: none;
   color: #333;
 }
 
-.manga-title a:hover {
+.title a:hover {
   text-decoration: underline;
   color: #16BAB4;
+}
+
+.characters {
+  font-size: 11px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.characters a {
+  color: #aaa;
+}
+
+.characters > *:after {
+  content: ',';
+  margin: 0 5px 0 0;
+  color: #bbb;
+}
+
+.characters > *:last-child:after {
+  display:none;
 }
