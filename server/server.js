@@ -38,7 +38,7 @@ import manga from './routes/manga.routes'
 import { serverConfig } from '../config'
 
 // Apply body Parser and server public assets and routes
-app.use(morgan('combined'))
+app.use(morgan('dev'))
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
@@ -132,7 +132,7 @@ app.use((req, res, next) => {
 sequelize.sync().then(() => {
   app.listen(serverConfig.port, (error) => {
     if (!error) {
-      console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+      console.log(`μ’s Liver is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
     }
   })
 })
