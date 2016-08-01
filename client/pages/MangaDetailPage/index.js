@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { IndexLink } from 'react-router'
 import Helmet from 'react-helmet'
 
 import Title from 'components/Layout/Title'
+import MangaListItem from 'components/Manga/MangaListItem'
 import MangaScrollViewer from 'components/Manga/MangaScrollViewer'
 
 import { fetchManga, getManga } from 'redux/manga'
@@ -14,8 +16,11 @@ export function MangaDetailPage (props) {
   return (
     <div>
       <Helmet title={props.manga.title} />
-      <Title>{props.manga.title}</Title>
-      <MangaScrollViewer manga={props.manga} />
+      <Title><IndexLink to='/'>Manga</IndexLink> {'>'} {props.manga.title}</Title>
+      <MangaListItem manga={props.manga} />
+      <div style={{padding: '0 15px'}}>
+        <MangaScrollViewer manga={props.manga} />
+      </div>
     </div>
   )
 }

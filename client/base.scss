@@ -38,6 +38,10 @@ body {
 	font-size: 12pt;
 }
 
+a, a:hover, a:visited {
+	color: inherit;
+}
+
 @mixin clearfix() {
 	&:before,
   &:after {
