@@ -26,11 +26,11 @@ export function Side (props) {
             {characters.map(name => (<li key={name}><Link to={`/characters/${name}`}><FormattedMessage id={name} /></Link></li>))}
           </ul>
         </nav>
-        <Link to='/manga/upload'>
+        {/* <Link to='/manga/upload'>
           <h3 className={styles['headline']}>
             <FormattedMessage id='addManga' />
           </h3>
-        </Link>
+        </Link>*/}
       </div>
     </div>
   )
