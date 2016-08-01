@@ -44,18 +44,18 @@ export default (
       }}
     />
     <Route
-      path='/manga/:id'
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./pages/MangaDetailPage').default)
-        })
-      }}
-    />
-    <Route
       path='/manga/upload'
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./pages/MangaUpload').default)
+        })
+      }}
+    />
+    <Route
+      path='/manga/:id'
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./pages/MangaDetailPage').default)
         })
       }}
     />
